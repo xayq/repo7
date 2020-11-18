@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.mapper.UserMapper">
+	<resultMap type="User" id="rm">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="age" property="age"/>
+		<association property="city" javaType="City" resultMap="com.yq.mapper.CityMapper.rm"/>
+	</resultMap>
+	<select id="findAll" resultMap="rm">
+	select * from user_info u,city_info c where u.cid=c.cid
+	</select>
+</mapper>
